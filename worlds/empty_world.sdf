@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<sdf version="1.10">
+  <world name="default">
+
+    <!-- A global light source -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    <!-- A ground plane -->
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+   
+
+    <!--0.1*2.5
+    <model name="wall_1">
+      <static>true</static>
+      <link name="wall_1_ground">
+        <pose relative_to="world">
+          0.5 0.4 0 0 0 0
+        </pose>
+        <collision name='wall_1_collision'>
+          <geometry>
+            <box>
+              <size>2.5 0.1 0.3</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>2.5 0.1 0.3</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.8 0.8 0.8 1</ambient>
+            <diffuse>0.8 0.8 0.8 1</diffuse>
+            <specular>0.8 0.8 0.8 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model> -->
+
+  </world>
+</sdf>
