@@ -24,7 +24,7 @@ def generate_launch_description():
     rsp = IncludeLaunchDescription(
                 PythonLaunchDescriptionSource([os.path.join(
                     get_package_share_directory(package_name),'launch','rsp.launch.py'
-                )]), launch_arguments={'use_sim_time': 'true'}.items()
+                )]), launch_arguments={'use_sim_time': 'true', 'use_ros2_control': 'true'}.items()
     )
     
     world = LaunchConfiguration('world')
@@ -35,11 +35,15 @@ def generate_launch_description():
         description='World to load'
         )
 
+    gazebo_params_file = os.path.join(os.path.join(get_package_share_directory(package_name),'config','gazebo_params.yaml'))
+
+
     # Include the Gazebo launch file, provided by the ros_gz_sim package
     gazebo = IncludeLaunchDescription(
                 PythonLaunchDescriptionSource([os.path.join(
                     get_package_share_directory('ros_gz_sim'), 'launch', 'gz_sim.launch.py')]),
-                    launch_arguments={'gz_args': ['-r -v4 ', world], 'on_exit_shutdown': 'true'}.items()
+                    launch_arguments={'gz_args': ['-r -v4 ', world], 'on_exit_shutdown': 'true', 'extra_gazebo_args': '--ros-args --params-file' + gazebo_params_file}.items(),
+                    
              )
 
     # Run the spawner node from the ros_gz_sim package. The entity name doesn't really matter if you only have a single robot.
@@ -48,6 +52,22 @@ def generate_launch_description():
                                    '-name', 'my_bot_one',
                                    '-z', '0.1'],
                         output='screen')
+    
+    # DiffDrive spawner node 
+    diff_drive_spawner = Node(
+        package='controller_manager',
+        executable="spawner",
+        arguments=["diff_cont"]
+
+    )
+
+    # JointBroad spawner node 
+    joint_broad_spawner = Node(
+        package='controller_manager',
+        executable="spawner",
+        arguments=["joint_broad"]
+
+    )
 
     # Launch the ROS-Gazebo bridge for normal topics
     bridge_params = os.path.join(get_package_share_directory(package_name),'config','gz_bridge.yaml')
@@ -67,6 +87,8 @@ def generate_launch_description():
         world_arg,
         gazebo,
         spawn_entity,
+        diff_drive_spawner,
+        joint_broad_spawner,
         ros_gz_bridge,
         
         # GzServer(world_sdf_file='/home/rocknroll/dev_ws/src/my_bot_one/worlds/empty.world')
