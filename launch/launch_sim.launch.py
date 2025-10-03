@@ -31,7 +31,8 @@ def generate_launch_description():
 
     world_arg = DeclareLaunchArgument(
         'world',
-        default_value="2block_world.sdf",
+        default_value=[os.path.join(
+                    get_package_share_directory('my_bot_one'), 'worlds', '2block_world.sdf')],
         description='World to load'
         )
 
@@ -53,6 +54,16 @@ def generate_launch_description():
                                    '-z', '0.1'],
                         output='screen')
     
+    rviz2 = Node(
+                package='rviz2',
+                namespace='',
+                executable='rviz2',
+                name='rviz2',
+                arguments=['-d' + os.path.join(get_package_share_directory('my_bot_one'), 'config', 'fully_loaded_my_bot_one.rviz'), {'use_sim_time': True}]
+            )
+
+
+
     # DiffDrive spawner node 
     diff_drive_spawner = Node(
         package='controller_manager',
@@ -81,15 +92,28 @@ def generate_launch_description():
         ]
     )
 
+    # Launch twist_mux node
+    twist_mux_params = os.path.join(get_package_share_directory(package_name),'config','twist_mux.yaml')
+    twist_mux  = Node(
+        package="twist_mux",
+        executable="twist_mux",
+        parameters=[twist_mux_params, {'use_sim_time': True}, {'use_stmaped': True}],
+        remappings=[('/cmd_vel_out', '/diff_cont/cmd_vel')
+            
+        ]
+    )
+
     # Launch them all!
     return LaunchDescription([
         rsp,
         world_arg,
         gazebo,
+        rviz2,
         spawn_entity,
         diff_drive_spawner,
         joint_broad_spawner,
         ros_gz_bridge,
+        twist_mux
         
         # GzServer(world_sdf_file='/home/rocknroll/dev_ws/src/my_bot_one/worlds/empty.world')
     ])

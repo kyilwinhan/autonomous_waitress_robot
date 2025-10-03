@@ -1,4 +1,3 @@
-
 import os
 
 from ament_index_python.packages import get_package_share_directory
@@ -16,20 +15,11 @@ from lifecycle_msgs.msg import Transition
 
 
 def generate_launch_description():
-    use_sim_time = LaunchConfiguration('use_sim_time')
-    use_lifecycle_manager = LaunchConfiguration("use_lifecycle_manager")
-    slam_params_file = LaunchConfiguration('slam_params_file')
     autostart = LaunchConfiguration('autostart')
+    use_lifecycle_manager = LaunchConfiguration("use_lifecycle_manager")
+    use_sim_time = LaunchConfiguration('use_sim_time')
+    slam_params_file = LaunchConfiguration('slam_params_file')
 
-    declare_use_sim_time_argument = DeclareLaunchArgument(
-        'use_sim_time',
-        default_value='true',
-        description='Use simulation/Gazebo clock')
-    declare_slam_params_file_cmd = DeclareLaunchArgument(
-        'slam_params_file',
-        default_value=os.path.join(get_package_share_directory("slam_toolbox"),
-                                   'config', 'mapper_params_localization.yaml'),
-        description='Full path to the ROS2 parameters file to use for the slam_toolbox node')
     declare_autostart_cmd = DeclareLaunchArgument(
         'autostart', default_value='true',
         description='Automatically startup the slamtoolbox. '
@@ -37,8 +27,17 @@ def generate_launch_description():
     declare_use_lifecycle_manager = DeclareLaunchArgument(
         'use_lifecycle_manager', default_value='false',
         description='Enable bond connection during node activation')
+    declare_use_sim_time_argument = DeclareLaunchArgument(
+        'use_sim_time',
+        default_value='true',
+        description='Use simulation/Gazebo clock')
+    declare_slam_params_file_cmd = DeclareLaunchArgument(
+        'slam_params_file',
+        default_value=os.path.join(get_package_share_directory("my_bot_one"),
+                                   'config', 'mapper_params_online_async.yaml'),
+        description='Full path to the ROS2 parameters file to use for the slam_toolbox node')
 
-    start_localization_slam_toolbox_node = LifecycleNode(
+    start_async_slam_toolbox_node = LifecycleNode(
         parameters=[
           slam_params_file,
           {
@@ -47,7 +46,7 @@ def generate_launch_description():
           }
         ],
         package='slam_toolbox',
-        executable='localization_slam_toolbox_node',
+        executable='async_slam_toolbox_node',
         name='slam_toolbox',
         output='screen',
         namespace=''
@@ -55,21 +54,21 @@ def generate_launch_description():
 
     configure_event = EmitEvent(
         event=ChangeState(
-            lifecycle_node_matcher=matches_action(start_localization_slam_toolbox_node),
-            transition_id=Transition.TRANSITION_CONFIGURE
+          lifecycle_node_matcher=matches_action(start_async_slam_toolbox_node),
+          transition_id=Transition.TRANSITION_CONFIGURE
         ),
         condition=IfCondition(AndSubstitution(autostart, NotSubstitution(use_lifecycle_manager)))
     )
 
     activate_event = RegisterEventHandler(
         OnStateTransition(
-            target_lifecycle_node=start_localization_slam_toolbox_node,
+            target_lifecycle_node=start_async_slam_toolbox_node,
             start_state="configuring",
             goal_state="inactive",
             entities=[
                 LogInfo(msg="[LifecycleLaunch] Slamtoolbox node is activating."),
                 EmitEvent(event=ChangeState(
-                    lifecycle_node_matcher=matches_action(start_localization_slam_toolbox_node),
+                    lifecycle_node_matcher=matches_action(start_async_slam_toolbox_node),
                     transition_id=Transition.TRANSITION_ACTIVATE
                 ))
             ]
@@ -79,11 +78,11 @@ def generate_launch_description():
 
     ld = LaunchDescription()
 
-    ld.add_action(declare_use_sim_time_argument)
-    ld.add_action(declare_slam_params_file_cmd)
     ld.add_action(declare_autostart_cmd)
     ld.add_action(declare_use_lifecycle_manager)
-    ld.add_action(start_localization_slam_toolbox_node)
+    ld.add_action(declare_use_sim_time_argument)
+    ld.add_action(declare_slam_params_file_cmd)
+    ld.add_action(start_async_slam_toolbox_node)
     ld.add_action(configure_event)
     ld.add_action(activate_event)
 
