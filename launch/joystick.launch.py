@@ -9,7 +9,7 @@ from ament_index_python.packages import get_package_share_directory
 def generate_launch_description():
     use_sim_time = LaunchConfiguration('use_sim_time')
 
-    joy_params = os.path.join(get_package_share_directory('articubot_one'),'config','joystick.yaml')
+    joy_params = os.path.join(get_package_share_directory('my_bot_one'),'config','joystick.yaml')
 
     joy_node = Node(
             package='joy',
@@ -21,7 +21,8 @@ def generate_launch_description():
             package='teleop_twist_joy',
             executable='teleop_node',
             name='teleop_node',
-            parameters=[joy_params, {'use_sim_time': use_sim_time}],
+            parameters=[joy_params, {'use_sim_time': use_sim_time}, #{'publish_stamped_twist': True}
+                        ],
             remappings=[('/cmd_vel','/cmd_vel_joy')]
          )
 
@@ -39,7 +40,7 @@ def generate_launch_description():
             'use_sim_time',
             default_value='false',
             description='Use sim time if true'),
-        joy_node,
-        teleop_node,
+            joy_node,
+            teleop_node,
         # twist_stamper       
     ])
