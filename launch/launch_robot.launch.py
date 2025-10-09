@@ -141,6 +141,44 @@ def generate_launch_description():
         ),
     ])
 
+
+
+    # Start Lidar node
+    lidar_start = Node(
+                package='sllidar_ros2',
+                executable='sllidar_node',
+                name='sllidar_node',
+                parameters=[{'channel_type':'serial',
+                   	   'serial_port': '/dev/ttyUSB0', 
+                           'serial_baudrate': 115200, 
+                           'frame_id': 'laser_frame',
+                           'inverted': False, 
+                           'angle_compensate': True }],
+                remappings=[('/scan', '/scan_raw')],
+                output='screen'
+                 )
+
+    # Laser_filter node to prevnet scanning near 4 bars around lidar, which are at 4 inches apart.
+    laser_filters = RegisterEventHandler(
+        OnProcessStart(
+            target_action=lidar_start,
+            on_start=[Node(
+            package="laser_filters",
+            executable="scan_to_scan_filter_chain",
+            name="laser_filters",
+            parameters=[
+                PathJoinSubstitution([
+                    get_package_share_directory("my_bot_one"),
+                    "config", "lidar_filter.yaml",
+                ])],
+            remappings=[
+                ("scan", "/scan_raw"),      # input from lidar driver
+                ("scan_filtered", "/scan"), # output to be used by SLAM or Nav2
+            ]
+        )]
+         )
+    )
+
     # --- Final LaunchDescription ---
     return LaunchDescription([
         declare_use_sim_time,
@@ -150,5 +188,7 @@ def generate_launch_description():
         controller_manager_node,
         diff_spawner,
         joint_spawner,
-        robot_group
+        robot_group,
+	    lidar_start,
+	    laser_filters
     ])
