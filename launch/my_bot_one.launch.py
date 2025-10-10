@@ -11,7 +11,7 @@ from launch.substitutions import Command, PathJoinSubstitution
 
 
 def generate_launch_description():
-    package_name = 'my_bot_one'
+    package_name = 'autonomous_waitress_robot'
     
     # Params files
     twist_mux_params = os.path.join(

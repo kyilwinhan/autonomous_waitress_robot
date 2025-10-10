@@ -13,18 +13,18 @@ from launch.actions import DeclareLaunchArgument
 
 
 def generate_launch_description():
-    package_name = 'my_bot_one'
+    package_name = 'autonomous_waitress_robot'
 
     # --- Launch arguments ---
     use_sim_time = LaunchConfiguration('use_sim_time', default='false')
-    sim_mode = LaunchConfiguration('sim_mode', default='true')
+    sim_mode = LaunchConfiguration('sim_mode', default='false')
     use_ros2_control = LaunchConfiguration('use_ros2_control', default='true')
 
     declare_use_sim_time = DeclareLaunchArgument(
         'use_sim_time', default_value='false', description='Use simulation clock if true'
     )
     declare_sim_mode = DeclareLaunchArgument(
-        'sim_mode', default_value='true', description='Simulation mode true/false'
+        'sim_mode', default_value='false', description='Simulation mode true/false'
     )
     declare_use_ros2_control = DeclareLaunchArgument(
         'use_ros2_control', default_value='true', description='Use ros2_control if true'
@@ -168,7 +168,7 @@ def generate_launch_description():
             name="laser_filters",
             parameters=[
                 PathJoinSubstitution([
-                    get_package_share_directory("my_bot_one"),
+                    get_package_share_directory("autonomous_waitress_robot"),
                     "config", "lidar_filter.yaml",
                 ])],
             remappings=[

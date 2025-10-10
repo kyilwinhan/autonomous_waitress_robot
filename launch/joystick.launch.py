@@ -9,7 +9,7 @@ from ament_index_python.packages import get_package_share_directory
 def generate_launch_description():
     use_sim_time = LaunchConfiguration('use_sim_time')
 
-    joy_params = os.path.join(get_package_share_directory('my_bot_one'),'config','xbox.config.yaml')
+    joy_params = os.path.join(get_package_share_directory('autonomous_waitress_robot'),'config','xbox.config.yaml')
 
     # Joystick Node
     joy_node = Node(

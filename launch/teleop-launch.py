@@ -18,7 +18,7 @@ def generate_launch_description():
         launch.actions.DeclareLaunchArgument(
             'config_filepath',
             default_value=PathJoinSubstitution([
-                FindPackageShare('my_bot_one'),
+                FindPackageShare('autonomous_waitress_robot'),
                 'config',
                 joy_config,   # use substitution, not string literal
             ])

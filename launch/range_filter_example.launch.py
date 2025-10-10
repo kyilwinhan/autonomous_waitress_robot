@@ -12,7 +12,7 @@ def generate_launch_description():
             name="laser_filters",
             parameters=[
                 PathJoinSubstitution([
-                    get_package_share_directory("my_bot_one"),
+                    get_package_share_directory("autonomous_waitress_robot"),
                     "config", "lidar_filter.yaml",
                 ])],
             remappings=[

@@ -15,13 +15,13 @@ def generate_launch_description():
     # Check if we're told to use sim time
     use_sim_time = LaunchConfiguration('use_sim_time')
     use_ros2_control = LaunchConfiguration('use_ros2_control')
-    sim_mode = LaunchConfiguration('sim_mode', default='false')
+    sim_mode = LaunchConfiguration('sim_mode', default=use_sim_time)
 
     # Process the URDF file
-    pkg_path = os.path.join(get_package_share_directory('my_bot_one'))
+    pkg_path = os.path.join(get_package_share_directory('autonomous_waitress_robot'))
     xacro_file = os.path.join(pkg_path,'description','robot.urdf.xacro')
     # robot_description_config = xacro.process_file(xacro_file).toxml()
-    robot_description_config = Command(['xacro ', xacro_file, ' use_ros2_control:=', use_ros2_control,' use_sim_mode:=', sim_mode ])
+    robot_description_config = Command(['xacro ', xacro_file, ' use_ros2_control:=', use_ros2_control,' sim_mode:=', 'true' ])
 
     # Create a robot_state_publisher node
     params = {'robot_description': robot_description_config, 'use_sim_time': use_sim_time, 'sim_mode': sim_mode }

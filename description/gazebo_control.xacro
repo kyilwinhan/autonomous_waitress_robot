@@ -8,8 +8,8 @@
             <!-- Wheel Information -->
             <left_joint>left_wheel_joint</left_joint>
             <right_joint>right_wheel_joint</right_joint>
-            <wheel_separation>0.35</wheel_separation>
-            <wheel_radius>0.05</wheel_radius>
+            <wheel_separation>0.292</wheel_separation>
+            <wheel_radius>0.031</wheel_radius>
 
             <!-- Limit -->
             <max_linear_acceleration>10</max_linear_acceleration>
@@ -60,17 +60,7 @@
         <sensor name='gpu_lidar' type='gpu_lidar'>
             <pose relative_to='laser_frame'>0 0 0 0 0 0</pose>
 
-            <!--  <topic>scan</topic>
-            <update_rate>5</update_rate>
-
-            <ros>
-                <argument>~/out:=scan</argument>
-                <frame_id>laser_frame</frame_id>
-
-            </ros>
-            <output_type>sensor_msgs/LaserScan</output_type>
-        -->
-
+            
             <lidar>
                 <scan>
                     <horizontal>
