@@ -1,7 +1,7 @@
-## Robot Package Template
+This is my graduation thesis for Bachelor of Engineering (Mechatronics) at Technological University (Mandalay), Mandalay Division, Myanmar. 
 
-This is a GitHub template. You can make your own copy by clicking the green "Use this template" button.
+Also this is the biggest project I'd ever worked till this day and I'm eager to update and upgrade my waitress robot, so stay tuned.
+I'm very much pleased to Joshnewans(Articulated Robotic) for his my_bot repository that this repository based and upgraded to ROS2 Jazzy compatiable one.
+Still this repo need to be clean up.
 
-It is recommended that you keep the repo/package name the same, but if you do change it, ensure you do a "Find all" using your IDE (or the built-in GitHub IDE by hitting the `.` key) and rename all instances of `autonomous_waitress_robot` to whatever your project's name is.
-
-Note that each directory currently has at least one file in it to ensure that git tracks the files (and, consequently, that a fresh clone has direcctories present for CMake to find). These example files can be removed if required (and the directories can be removed if `CMakeLists.txt` is adjusted accordingly).
+So, clone this repository into your directory and have fun.
