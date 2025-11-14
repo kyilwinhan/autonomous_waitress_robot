@@ -92,13 +92,29 @@ The robot use A* algorithm in path planning to the shortest path to destination 
 
 ### 7.2 Real Robot
 The real-time performance of the real robot is reliable and test the procedure Initial > Send Goalpose > Travel to Kitchen > Arrive Kitchen > Arrive T1 > Arrive T2 > Arrive Initial.
+
+The Fig. shows 1.6m*1.6m workspace map.
 ![Map](assets/images/img_8_Scanned_map.jpg)
+
+The robot started at initial position.
 ![Initial](assets/images/img_9_initial_position.png)
+
+Goalpose to the Kitchen is sent through RViz2  from PC.
 ![Send Goalpose](assets/images/img_10_sending_goalpose.png)
+
+The robot started travelling to the Kitchen.
 ![Travel to Kitchen](assets/images/img_11_travelling_to_Kitchen.png)
+
+Arriving at the goal point.
 ![Arrive Kitchen](assets/images/img_12_arrive_Kitchen.png)
+
+Arriving at the Table-one.
 ![Arrive T1](assets/images/img_13_arrive_T1.png)
+
+Arriving at the Table-two.
 ![Arrive T2](assets/images/img_14_arrive_T2.png)
+
+Finally returned to the initial position.
 ![Arrive Initial](assets/images/img_15_arrive_Initial.png)
 
 ---
