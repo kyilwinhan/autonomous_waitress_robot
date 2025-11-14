@@ -65,7 +65,7 @@ The overall flowchart is as shown below:
 
 ## 5. Pins Connection
 The pin connections between hardware component are as follow:
-![Pins](assets/images/Pins Connection.png)
+![Pins](assets/images/Pins_Connection.png)
 
 ---
 
@@ -92,7 +92,7 @@ Starting robot in Gazebo without and with the Laser scan rays.
 Visualizing real time data and mapping using SLAM Toolbox in RViz2.
 ![RViz2](assets/images/img_3_RViz2.png)
 
-Scanned simulated map.
+Scanned simulated map.</br>
 ![Map](assets/images/img_4_map.png)
 
 The robot use A* algorithm in path planning to the shortest path to destination based on global costmap, whereas Dynamic Window Approach method calculate velocity commands to follow that path, avoiding dynamic obstacles by creating new trajectory.
