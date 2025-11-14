@@ -64,17 +64,36 @@ The overall flowchart is as shown below:
 ---
 
 ## 5. Pins Connection
-The pins connection between hardware components are as follow:
-![Pins](assets/images/Pins_Connection.png)
+The pin connections between hardware component are as follow:
+![Pins](assets/images/Pins Connection.png)
 
 ---
 
-## 6. Tests and Results
+## 6. 3D Design and Real Robot
+The prototype is designed in SolidWorks.
+![Prototype](assets/images/img_7_3d_design.png) </br>
+
+The real robot used light-weight aluminum hollow as main frame chassis, hold tight by 12mm bolts and nuts, and PVC plates are cut by a CNC machine.
+![Real Robot](assets/images/img_7_prototype.png)
+
+---
+
+## 7. Tests and Results
+The simulated robot in Gazebo work well without any error, in generating map and navigation in the workspce. 
+![Gazebo](assets/images/img_2_gazebo.png)
+![RViz2](assets/images/img_3_RViz2.png)
+![Map](assets/images/img_4_map.png) </br>
+
+The robot use A* algorithm in path planning to the shortest path to destination based on global costmap, whereas Dynamic Window Approach method calculate velocity commands to follow that path, avoiding dynamic obstacles by creating new trajectory.
+![Global Costmap](assets/images/img_5_global_costmap.png)
+![Local Costmap](assets/images/img_6_local_costmap.png) </br>
+
+
 
 
 ---
 
-## 7. Conclusion
+## 8. Conclusion
 
 
 ---
