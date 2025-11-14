@@ -69,11 +69,11 @@ The pin connections between hardware component are as follow:
 
 ---
 
-## 6. 3D Design, Real Robot and the Workspace
+## 6. 3D Design and Real Robot
 The prototype is designed in SolidWorks.
 ![Prototype](assets/images/img_7_3d_design.png) </br>
 
-The real robot used light-weight aluminum hollow square as main frame chassis, hold tight by 12mm bolts and nuts, and PVC plates are cut by a CNC machine.
+The real robot used light-weight aluminum hollow as main frame chassis, hold tight by 12mm bolts and nuts, and PVC plates are cut by a CNC machine.
 ![Real Robot](assets/images/img_7_prototype.png)
 
 The real world testing workspace.
@@ -84,7 +84,7 @@ The real world testing workspace.
 ## 7. Tests and Results
 ### 7.1 Simulated Robot
 
-The simulated robot in Gazebo work well without fatal errors, in generating map and navigation in the workspce. 
+The simulated robot in Gazebo work well without any error, in generating map and navigation in the workspce. 
 
 Starting robot in Gazebo without and with the Laser scan rays.
 ![Gazebo](assets/images/img_2_gazebo.png)
@@ -93,11 +93,11 @@ Visualizing real time data and mapping using SLAM Toolbox in RViz2.
 ![RViz2](assets/images/img_3_RViz2.png)
 
 Scanned simulated map.
-![Map](assets/images/img_4_map.png) </br>
+![Map](assets/images/img_4_map.png)
 
-The robot use A* algorithm in path planning of shortest path to destination based on global costmap, whereas Dynamic Window Approach method calculate velocity commands to follow that path, avoiding dynamic obstacles by creating new trajectory.
+The robot use A* algorithm in path planning to the shortest path to destination based on global costmap, whereas Dynamic Window Approach method calculate velocity commands to follow that path, avoiding dynamic obstacles by creating new trajectory.
 ![Global Costmap](assets/images/img_5_global_costmap.png)
-![Local Costmap](assets/images/img_6_local_costmap.png) </br>
+![Local Costmap](assets/images/img_6_local_costmap.png)
 
 ### 7.2 Real Robot
 The real-time performance of the real robot is reliable and test the procedure Initial > Send Goalpose > Travel to Kitchen > Arrive Kitchen > Arrive T1 > Arrive T2 > Arrive Initial.
