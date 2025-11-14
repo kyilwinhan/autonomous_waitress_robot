@@ -13,7 +13,7 @@
 - [Methodology](#2-methodology)
 - [Overall Block Diagram](#3-overall-blockdiagram)
 - [Overall Flowchart](#4-overall-flowchart)
-- [Pin Connections](#5-pin-connections)
+- [Pins Connection](#5-pins-connection)
 - [Test and Results](#6-test-and-results)
 - [Conclusion](#7-conclusion)
 
@@ -49,3 +49,32 @@ Based on the generated map:
 - **DWA** generates real-time velocity commands  
 - Real-time laser data handles dynamic obstacle avoidance.
 
+---
+
+## 3. Overall Blockdiagram
+The overall block diagram is as illustrated follow:
+![Overall Block Diagram](assets/images/img_0_overall_block_diagram.png)
+
+---
+
+## 4. Overall Flowchart
+The overall flowchart is as shown below:
+![Overall Flowchart](assets/images/img_0_overallk_flowchart.png)
+
+---
+
+## 5. Pins Connection
+The pin connections between hardware component are as follow:
+![Pins Connection](assets/images/Pins Connection.png)
+
+---
+
+## 6. Tests and Results
+
+
+---
+
+## 7. Conclusion
+
+
+---
