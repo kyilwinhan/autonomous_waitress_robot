@@ -20,23 +20,32 @@
 ---
 
 ## Abstract
-This thesis aims to simulate and construct a ROS2-based autonomous waitress robot capable of delivering ordered items from a web-based menu to respective tables while avoiding static and dynamic obstacles.  
-The system mainly uses **ROS 2**, **SLAM Toolbox**, **Nav2**, **URDF**, and **Gazebo** simulation.
+This thesis aims to simulate and construct ROS2-based autonomous waitress robot capable of delivering ordered items from web-based menu to respective tables avoiding static and dynamic obstacles in real-world environment. 
 
-The robot performs well in simulation and shows acceptable performance in real-world scenarios, although no image-processing method is used and wheel slipping occurs on uneven or sloped surfaces.
+The system mainly used Robot Operating System 2 (**ROS2**) alongside with **SLAM Toolbox**, **Nav2 stack** for mapping and navigation, and Unified Robot Description Format (**URDF**), Simulation Description Format (**SDF**) for robot description and simulation in **Gazebo**, monitored by ROS Visualization Tool (**RViz2**). This system works really well in simulation and shows acceptable performance in real world application due to environmental and sensory-communication effect. 
+
+However, no image processing method is applied and sometimes slippery on uneven and slope surfaces.The robot performs well in simulation and shows acceptable performance in real-world scenarios, although no image-processing method is used and wheel slipping occurs on uneven or sloped surfaces.
 
 ---
 
 ## 1. Introduction
-The goal of this thesis is to address labor shortages in the restaurant industry by implementing a fully autonomous robotic waitress capable of navigation, delivery, and integration with a web-based ordering system.
+The goal of this thesis is to address labor shortages in the restaurant industry by implementing a fully autonomous robotic waitress capable of navigation, delivery, and integration with a web-based QR-Codes ordering system.
 
 ### **Aims & Objectives**
-- Design a differential-drive mobile robot platform using Raspberry Pi 5 and Arduino Uno.
-- Implement SLAM using a LiDAR sensor for restaurant mapping.
-- Develop autonomous navigation using the ROS 2 Nav2 stack.
-- Simulate the system in Gazebo and visualize real time data processing in RViz2.
-- Create a QR-code-based web ordering system.
-- Evaluate obstacle avoidance and path-following performance.
+The aim of this thesis is to implement and control an autonomous waitress
+robot in real world, delivering safely and reliably some meal from kitchen to designated
+tables. The objectives of this system are as follow;
+- To design a differential-drive mobile robot platform with Raspberry Pi5
+and Arduino Uno microcontroller.
+- To implement Simultaneous Localization and Mapping (SLAM)
+algorithm using LiDAR for restaurant mapping.
+- To develop autonomous navigation using ROS2 Nav2 stack.
+- To simulate and demonstrate the real time operation of the system in Rviz2
+on PC.
+- To construct QR code scan able web-based restaurant order handling
+system.
+- To evaluate robot performance in obstacle avoidance and path-following
+tasks.
 
 ---
 
