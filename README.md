@@ -49,16 +49,3 @@ Based on the generated map:
 - **DWA** generates real-time velocity commands  
 - Real-time laser data handles dynamic obstacle avoidance.
 
-### System Diagram
-![System Diagram](img/system_diagram.png)
-
-### Example Robot Task JSON
-```json
-GET /api/robot/task
-
-{
-  "task": "deliver",
-  "table": 5,
-  "orderId": 10,
-  "pose": { "x": 2.3, "y": 1.1, "yaw": 1.57 }
-}
