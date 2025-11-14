@@ -79,6 +79,8 @@ The real robot used light-weight aluminum hollow as main frame chassis, hold tig
 ---
 
 ## 7. Tests and Results
+### 7.1 Simulated Robot
+
 The simulated robot in Gazebo work well without any error, in generating map and navigation in the workspce. 
 ![Gazebo](assets/images/img_2_gazebo.png)
 ![RViz2](assets/images/img_3_RViz2.png)
@@ -88,8 +90,16 @@ The robot use A* algorithm in path planning to the shortest path to destination 
 ![Global Costmap](assets/images/img_5_global_costmap.png)
 ![Local Costmap](assets/images/img_6_local_costmap.png) </br>
 
-
-
+### 7.2 Real Robot
+The real-time performance of the real robot is reliable and test the procedure Initial > Send Goalpose > Travel to Kitchen > Arrive Kitchen > Arrive T1 > Arrive T2 > Arrive Initial.
+![Map](assets/images/img_8_Scanned_map.jpg)
+![Initial](assets/images/img_9_initial_position.png)
+![Send Goalpose](assets/images/img_10_sending_goalpose.png)
+![Travel to Kitchen](assets/images/img_11_travelling_to_Kitchen.png)
+![Arrive Kitchen](assets/images/img_12_arrive_Kitchen.png)
+![Arrive T1](assets/images/img_13_arrive_T1.png)
+![Arrive T2](assets/images/img_14_arrive_T2.png)
+![Arrive Initial](assets/images/img_15_arrive_Initial.png)
 
 ---
 
