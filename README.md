@@ -14,8 +14,9 @@
 - [Overall Block Diagram](#3-overall-blockdiagram)
 - [Overall Flowchart](#4-overall-flowchart)
 - [Pins Connection](#5-pins-connection)
-- [Test and Results](#6-test-and-results)
-- [Conclusion](#7-conclusion)
+- [3D Design, Real Robot and Real Workspace](#6-3d-design-real-robot-and-real-workspace)
+- [Test and Results](#7-test-and-results)
+- [Conclusion](#8-conclusion)
 
 ---
 
@@ -138,6 +139,6 @@ Finally returned to the initial position.
 ---
 
 ## 8. Conclusion
-The minimal error is present in wheel odometry slipping while moving due to uneven surfaces that make robot estimation and transformation seriously drifted, and eventually misled navigation that can be solved by using great traction tyres. Dispite that the robot show acceptable performance in evenly flatten surfaces.
+The minor error is present in wheel odometry slipping, while moving due to uneven surfaces that make robot estimation and transformation seriously drifted, and eventually misled navigation that can be solved by using great traction tyres. Dispite that the robot shows acceptable performance in evenly flatten surfaces.
 
 ---
