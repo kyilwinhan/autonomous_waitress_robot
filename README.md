@@ -64,7 +64,7 @@ The overall flowchart is as shown below:
 ---
 
 ## 5. Pins Connection
-The pin connections between hardware component are as follow:
+The pins connection between hardware components are as follow:
 ![Pins](assets/images/Pins_Connection.png)
 
 ---
