@@ -34,7 +34,7 @@ The goal of this thesis is to address labor shortages in the restaurant industry
 - Design a differential-drive mobile robot platform using Raspberry Pi 5 and Arduino Uno.
 - Implement SLAM using a LiDAR sensor for restaurant mapping.
 - Develop autonomous navigation using the ROS 2 Nav2 stack.
-- Simulate the system in Gazebo and RViz2.
+- Simulate the system in Gazebo and visualize real time data processing in RViz2.
 - Create a QR-code-based web ordering system.
 - Evaluate obstacle avoidance and path-following performance.
 
@@ -69,7 +69,7 @@ The pin connections between hardware component are as follow:
 
 ---
 
-## 6. 3D Design and Real Robot
+## 6. 3D Design, Real Robot and Real Workspace
 The prototype is designed in SolidWorks.
 ![Prototype](assets/images/img_7_3d_design.png) </br>
 
@@ -84,7 +84,7 @@ The real world testing workspace.
 ## 7. Tests and Results
 ### 7.1 Simulated Robot
 
-The simulated robot in Gazebo work well without any error, in generating map and navigation in the workspce. 
+The simulated robot in Gazebo ,visualized in RViz2, work well without any error, in generating map and navigation in the workspce. 
 
 Starting robot in Gazebo without and with the Laser scan rays.
 ![Gazebo](assets/images/img_2_gazebo.png)
@@ -102,13 +102,13 @@ The robot use A* algorithm in path planning to the shortest path to destination 
 ### 7.2 Real Robot
 The real-time performance of the real robot is reliable and test the procedure Initial > Send Goalpose > Travel to Kitchen > Arrive Kitchen > Arrive T1 > Arrive T2 > Arrive Initial.
 
-The Fig. shows 1.6m*1.6m workspace map.
+The Fig. shows occupancy grid map of 1.6m*1.6m workspace.
 ![Map](assets/images/img_8_Scanned_map.jpg)
 
 The robot started at initial position.
 ![Initial](assets/images/img_9_initial_position.png)
 
-Goalpose to the Kitchen is sent through RViz2  from PC.
+Goalpose to the Kitchen is sent through RViz2 from PC.
 ![Send Goalpose](assets/images/img_10_sending_goalpose.png)
 
 The robot started travelling to the Kitchen.
@@ -129,6 +129,6 @@ Finally returned to the initial position.
 ---
 
 ## 8. Conclusion
-
+The minimal error is present in wheel odometry slipping while moving due to uneven surfaces that make robot estimation and transformation seriously drifted, and eventually misled navigation that can be solved by using great traction tyres. Dispite that the robot show acceptable performance in evenly flatten surfaces.
 
 ---
